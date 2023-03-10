@@ -52,12 +52,12 @@
 
 <body>
     <div class="container">
-       <ul>
+       <ul class="list-group">
         <?php foreach($hotels as $key => $hotel) { ?>
-            <li><?= $key ?></li>
+            <li class="list-group-item"><?= $key ?></li>
 
-            <?php foreach($hotel as $my_hotel) { ?>
-                <li><?=$my_hotel ?></li>
+            <?php foreach($hotel as $key => $my_hotel) { ?>
+                <li class="list-group-item"><h4><?=$key ?> : </h4><?=$my_hotel ?></li>
             <?php } ?>
         <?php } ?>
        </ul>
