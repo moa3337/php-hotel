@@ -52,25 +52,57 @@
 
 <body>
     <div class="container">
-       <ul class="list-group">
-        <?php foreach($hotels as $key => $hotel) { ?>
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        ELENCO DEGLI HOTEL
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Descrizione</th>
+                                    <th scope="col">Parchegio</th>
+                                    <th scope="col">Voto</th>
+                                    <th scope="col">Distanza</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($hotels as $key => $hotel) : ?>
+                                <tr>
+                                    <th scope="row"><?= $key +1 ?></th>
+                                    <td><?= $hotel["name"] ?></td>
+                                    <td><?= $hotel["description"] ?></td>
+                                    <td><?= $hotel["parking"] ? "SI" : "NO" ?></td>
+                                    <td><?= $hotel["vote"] ?></td>
+                                    <td><?= $hotel["distance_to_center"] . " km" ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><hr>
+        <!-- METODO ALTERNATIVO -->
+
+        <ul class="list-group mt-4">
+        <?php foreach($hotels as $key => $hotel) { 
+            if($hotel['parking']==true){?>
             <li class="list-group-item"><?= $key ?></li>
 
             <?php foreach($hotel as $key => $my_hotel) { ?>
-                <li class="list-group-item"><h4><?=$key ?> : </h4><?=$my_hotel ?></li>
+                <li class="list-group-item">
+                    <h4><?=$key ?> : </h4><?=$my_hotel ?>
+                </li>
             <?php } ?>
-        <?php } ?>
+        <?php } } ?>
        </ul>
     </div>
 </body>
 </html>
-
-
-<?php
-//foreach($hotels as $hotel) {
-    //var_dump($hotels);
-    //foreach($hotel as $my_hotel) {
-        //var_dump($my_hotel);
-    //}
-//}
-?>
